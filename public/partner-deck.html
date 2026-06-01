@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocuAmiga — Law Firm Partnership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--dark:#1a1024;--pink:#e0197d;--orange:#f5a023;--purple:#7c3aed;--blue:#4169e1;--light:#fdf4f8;--gray:#6b7280;--border:#e5e7eb}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── TOP NAV ── */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(26,16,36,.72);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav-logo{height:30px;width:auto;object-fit:contain}
+.nav-brand{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.01em;line-height:1}
+.nav-brand .na{background:linear-gradient(90deg,#e8a45a 0%,#e0197d 50%,#7c3aed 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lang-toggle{display:flex;gap:2px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:3px}
+.lang-btn{font-size:12px;font-weight:700;letter-spacing:.06em;padding:6px 16px;border-radius:100px;border:none;cursor:pointer;transition:all .2s ease;background:transparent;color:rgba(255,255,255,.4);font-family:'Inter',sans-serif}
+.lang-btn.active{background:rgba(255,255,255,.16);color:#fff}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:center;padding-top:60px}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transform:scale(1.06)}
+.hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(115deg,rgba(26,16,36,.95) 0%,rgba(26,16,36,.6) 55%,rgba(26,16,36,.15) 100%),linear-gradient(0deg,rgba(26,16,36,.85) 0%,transparent 45%)}
+.hero-color{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(224,25,125,.18) 0%,rgba(124,58,237,.12) 50%,rgba(65,105,225,.1) 100%);mix-blend-mode:screen}
+.hero-content{position:relative;z-index:10;max-width:1200px;margin:0 auto;padding:0 64px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:9px 20px;font-size:13px;font-weight:500;color:rgba(255,255,255,.85);margin-bottom:32px;opacity:0;animation:fadeUp .8s ease .3s forwards}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--pink);animation:pulse 2s ease infinite;flex-shrink:0}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(52px,7vw,96px);font-weight:900;line-height:1.02;margin-bottom:24px;opacity:0;animation:fadeUp .9s ease .5s forwards}
+.hero-title .grad{background:linear-gradient(90deg,var(--pink) 0%,var(--orange) 50%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(16px,1.8vw,21px);color:rgba(255,255,255,.72);font-weight:300;line-height:1.65;max-width:540px;margin-bottom:48px;opacity:0;animation:fadeUp .9s ease .7s forwards}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s ease .9s forwards}
+.btn-fill{background:var(--pink);color:#fff;font-weight:700;font-size:15px;padding:17px 38px;border-radius:100px;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s ease}
+.btn-fill:hover{background:#c4166c;transform:scale(1.04);box-shadow:0 12px 32px rgba(224,25,125,.35)}
+.btn-ghost{border:2px solid rgba(255,255,255,.35);color:#fff;font-weight:600;font-size:15px;padding:15px 36px;border-radius:100px;background:transparent;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s ease;backdrop-filter:blur(10px)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.1)}
+.scroll-ind{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeIn 1s ease 1.6s forwards}
+.scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scrollBounce 2.2s ease infinite}
+.scroll-txt{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+
+/* ── INTRO ── */
+.intro{background:#fff;padding:100px 64px}
+.intro-inner{max-width:1200px;margin:0 auto}
+.intro-top{display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:center;padding-bottom:80px;border-bottom:1px solid var(--border)}
+.intro-logo{height:40px;width:auto;filter:brightness(0)}
+.intro-copy{font-size:20px;color:var(--gray);line-height:1.7;max-width:580px}
+.intro-bottom{text-align:center;padding-top:80px;max-width:740px;margin:0 auto}
+
+/* ── SHARED ── */
+.label{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-bottom:14px}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(34px,4.2vw,58px);font-weight:800;line-height:1.1;margin-bottom:20px}
+.s-body{font-size:18px;line-height:1.7;color:var(--gray)}
+.dark-label{color:var(--orange)}
+.section-light{background:var(--light);padding:120px 64px}
+.section-white{background:#fff;padding:120px 64px}
+.inner{max-width:1200px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+
+/* ── SCRUB ── */
+.scrub-wrap{height:280vh;position:relative;background:var(--dark)}
+.scrub-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0 80px}
+.scrub-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(224,25,125,.1) 0%,transparent 70%)}
+.scrub-text{font-family:'Playfair Display',serif;font-size:clamp(28px,3.8vw,60px);font-weight:800;line-height:1.5;text-align:center;max-width:860px;width:100%;position:relative;z-index:1;word-wrap:break-word;overflow-wrap:break-word}
+.w{opacity:.12;filter:blur(4px);transition:opacity .5s ease,filter .5s ease}
+.w.on{opacity:1;filter:blur(0)}
+.w.pk{color:var(--pink)}
+.w.gd{color:var(--orange)}
+
+/* ── PROBLEM ── */
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:64px}
+.prob-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(26,16,36,.07);opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s ease}
+.prob-card.on{opacity:1;transform:translateY(0)}
+.prob-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(224,25,125,.12)}
+.prob-card img{width:100%;height:210px;object-fit:cover;display:block}
+.prob-body{padding:24px}
+.prob-title{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.prob-desc{font-size:14px;color:var(--gray);line-height:1.65}
+
+/* ── STRIP ── */
+.strip{position:relative;height:58vh;overflow:hidden}
+.strip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transform-origin:center;transition:transform .1s linear}
+.strip-ov{position:absolute;inset:0;background:rgba(26,16,36,.7);display:flex;align-items:center;justify-content:center}
+.strip-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,3.5vw,50px);font-weight:700;text-align:center;max-width:820px;padding:0 48px;line-height:1.35;color:#fff;opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.strip-quote.on{opacity:1;transform:translateY(0)}
+
+/* ── STICKY STEPS ── */
+.steps-wrap{height:400vh;position:relative}
+.steps-sticky{position:sticky;top:0;height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.steps-bar-track{position:absolute;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.1);z-index:20}
+.steps-bar{height:100%;background:linear-gradient(90deg,#2563eb,var(--pink),var(--orange),var(--purple));width:0%;transition:width .08s linear}
+.steps-left{background:var(--light);display:flex;flex-direction:column;justify-content:center;padding:64px 72px;overflow:hidden}
+.step-label-top{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-bottom:24px}
+.step-pills{display:flex;gap:8px;margin-bottom:44px}
+.sp{height:6px;border-radius:3px;background:#d1d5db;transition:width .45s ease,background .45s ease;width:6px}
+.sp.a{width:32px;background:var(--pink)}
+.step-panel{display:none;flex-direction:column;gap:20px}
+.step-panel.a{display:flex;animation:panelIn .4s ease forwards}
+@keyframes panelIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.step-num-row{display:flex;align-items:center;gap:14px}
+.step-num{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#fff;flex-shrink:0;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.step-chip{font-size:11px;font-weight:700;padding:6px 14px;border-radius:100px;color:#fff;letter-spacing:.06em;text-transform:uppercase}
+.step-title{font-family:'Playfair Display',serif;font-size:clamp(26px,2.8vw,42px);font-weight:800;color:var(--dark);line-height:1.12}
+.step-desc{font-size:15px;line-height:1.8;color:var(--gray);white-space:pre-line}
+.steps-right{position:relative;overflow:hidden}
+.step-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.09);transition:opacity .55s ease,transform .55s ease}
+.step-img.a{opacity:1;transform:scale(1)}
+.img-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,16,36,.65),transparent 50%);z-index:2}
+.float-card{position:absolute;bottom:32px;left:32px;right:32px;z-index:10;background:rgba(255,255,255,.14);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:18px 22px;display:flex;align-items:center;gap:14px;opacity:0;transform:translateY(14px);transition:opacity .35s ease,transform .35s ease}
+.float-card.a{opacity:1;transform:translateY(0)}
+.fi{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fi svg{width:20px;height:20px}
+.ft{color:#fff;font-weight:600;font-size:14px}
+.fs{color:rgba(255,255,255,.5);font-size:12px;margin-top:2px}
+
+/* ── SERVICES ── */
+.line-heading{margin:56px 0 28px;padding-left:20px;border-left:4px solid var(--pink)}
+.line-heading h3{font-family:'Playfair Display',serif;font-size:clamp(18px,2.2vw,26px);font-weight:800;color:var(--dark);margin-bottom:6px}
+.line-heading p{font-size:13px;color:var(--gray);line-height:1.5}
+.line-heading.ess-head{border-left-color:var(--blue);margin-top:80px}
+.svcs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start}
+.svc-card{border:2px solid var(--border);border-radius:24px;padding:36px;background:#fff;opacity:0;transform:translateY(28px);transition:all .55s ease}
+.svc-card.on{opacity:1;transform:translateY(0)}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(26,16,36,.1)}
+.svc-card.feat{border-color:var(--orange);box-shadow:0 24px 60px rgba(245,160,35,.14);transform:translateY(28px) scale(1.02)}
+.svc-card.feat.on{transform:translateY(0) scale(1.02)}
+.svc-card.feat:hover{transform:translateY(-6px) scale(1.02)}
+.rec-badge{display:inline-block;font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;background:var(--orange);color:#fff;margin-bottom:20px;text-transform:uppercase;letter-spacing:.06em}
+.svc-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--dark);margin-bottom:8px}
+.svc-price{font-size:48px;font-weight:900;color:var(--blue);line-height:1;margin-bottom:8px}
+.svc-window{font-size:13px;color:#9ca3af;margin-bottom:16px}
+.svc-meta{display:flex;flex-direction:column;gap:5px;font-size:13px;color:#9ca3af;border-bottom:1px solid #f3f4f6;padding-bottom:18px;margin-bottom:18px}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:11px}
+.svc-feat{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#374151;line-height:1.4}
+.chk{width:18px;height:18px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.chk svg{width:10px;height:10px}
+.svc-btn{width:100%;margin-top:24px;padding:14px;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .3s ease;font-family:'Inter',sans-serif}
+.svc-btn-fill{background:var(--pink);color:#fff}
+.svc-btn-fill:hover{background:#c4166c}
+.svc-btn-out{background:transparent;border:2px solid var(--pink);color:var(--pink)}
+.svc-btn-out:hover{background:#fdf4f8}
+.earn-line{text-align:center;margin-top:12px;font-size:13px;color:var(--pink);font-weight:600}
+/* Essential card */
+.ess-card{border:2px solid var(--blue);border-radius:24px;padding:40px 44px;background:#fff;display:grid;grid-template-columns:200px 1fr 200px;gap:40px;align-items:center;opacity:0;transform:translateY(28px);transition:all .55s ease}
+.ess-card.on{opacity:1;transform:translateY(0)}
+.ess-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(65,105,225,.11)}
+.ess-price-block{text-align:center;padding-right:40px;border-right:1px solid #f3f4f6}
+.ess-price{font-size:clamp(42px,4.5vw,60px);font-weight:900;color:var(--blue);line-height:1;margin-bottom:10px}
+.ess-meta-item{font-size:13px;color:#9ca3af;margin-top:4px}
+.ess-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.ess-actions{text-align:center;padding-left:40px;border-left:1px solid #f3f4f6}
+
+/* ── COMMISSION ── */
+.commission{background:var(--dark);padding:140px 64px;position:relative;overflow:hidden}
+.comm-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(224,25,125,.22) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(124,58,237,.22) 0%,transparent 60%)}
+.comm-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto}
+.comm-head{text-align:center;margin-bottom:80px}
+.comm-tiers{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:56px}
+.tier{border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:52px 40px;background:rgba(255,255,255,.05);backdrop-filter:blur(10px);text-align:center;opacity:0;transform:translateY(28px);transition:all .6s ease}
+.tier.on{opacity:1;transform:translateY(0)}
+.tier.gold{border-color:var(--orange);background:rgba(245,160,35,.07)}
+.tier-range{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:10px}
+.tier-pct{font-family:'Playfair Display',serif;font-size:88px;font-weight:900;line-height:1;margin-bottom:8px}
+.tier:first-child .tier-pct{color:var(--pink)}
+.tier.gold .tier-pct{color:var(--orange)}
+.tier-lbl{font-size:15px;color:rgba(255,255,255,.65);font-weight:500}
+.comm-details{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:40px 48px;text-align:center;opacity:0;transform:translateY(24px);transition:all .6s ease .2s}
+.comm-details.on{opacity:1;transform:translateY(0)}
+.comm-d-icon{width:52px;height:52px;border-radius:16px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.comm-d-icon svg{width:26px;height:26px}
+.comm-d h4{font-size:17px;font-weight:700;color:#fff;margin-bottom:8px}
+.comm-d p{font-size:14px;color:rgba(255,255,255,.45);line-height:1.55}
+
+/* ── PARTNER BENEFITS ── */
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:64px}
+.partner-img-wrap{border-radius:24px;overflow:hidden;aspect-ratio:4/3;opacity:0;transform:translateX(-30px);transition:all .7s ease}
+.partner-img-wrap.on{opacity:1;transform:translateX(0)}
+.partner-img-wrap img{width:100%;height:100%;object-fit:cover}
+.benefits{display:flex;flex-direction:column;gap:26px}
+.ben{display:flex;gap:18px;align-items:flex-start;opacity:0;transform:translateX(28px);transition:opacity .6s ease,transform .6s ease}
+.ben.on{opacity:1;transform:translateX(0)}
+.ben-ico{width:48px;height:48px;border-radius:14px;background:rgba(224,25,125,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--pink)}
+.ben-ico svg{width:22px;height:22px}
+.ben-title{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.ben-desc{font-size:14px;color:var(--gray);line-height:1.55}
+
+/* ── FAQ ── */
+.faq-list{max-width:780px;margin:64px auto 0}
+.faq-item{border:1px solid var(--border);border-radius:16px;margin-bottom:12px;overflow:hidden}
+.faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 26px;background:none;border:none;text-align:left;cursor:pointer;font-size:16px;font-weight:600;color:var(--dark);font-family:'Inter',sans-serif;transition:background .2s;gap:16px}
+.faq-btn:hover{background:#f9fafb}
+.faq-ico{width:22px;height:22px;color:#9ca3af;flex-shrink:0;transition:transform .25s ease}
+.faq-item.open .faq-ico{transform:rotate(180deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-body{max-height:400px}
+.faq-text{padding:0 26px 22px;font-size:15px;color:var(--gray);line-height:1.7}
+
+/* ── CTA ── */
+.cta{background:var(--dark);padding:140px 64px;text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(224,25,125,.28) 0%,transparent 65%)}
+.cta-inner{position:relative;z-index:1}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(42px,6vw,80px);font-weight:900;line-height:1.04;margin-bottom:24px}
+.cta-sub{font-size:20px;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto 48px;line-height:1.55}
+.cta-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.contact-strip{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;margin-top:64px;padding-top:64px;border-top:1px solid rgba(255,255,255,.1)}
+.contact-item{display:flex;flex-direction:column;gap:5px}
+.contact-lbl{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.contact-val{font-size:16px;font-weight:600;color:rgba(255,255,255,.82)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.08);padding:28px 48px;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{height:26px;width:auto}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.28)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
+@keyframes scrollBounce{0%,100%{opacity:1;transform:scaleY(1);transform-origin:top}50%{opacity:.4;transform:scaleY(.55);transform-origin:top}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .topnav{padding-left:20px;padding-right:20px}
+  .hero-content,.intro,.comm-inner{padding-left:28px;padding-right:28px}
+  .section-light,.section-white,.commission,.cta{padding-left:28px;padding-right:28px}
+  .intro-top{grid-template-columns:1fr;gap:28px}
+  .cards-3,.svcs-grid,.comm-tiers,.comm-details,.partner-grid{grid-template-columns:1fr}
+  .ess-card{grid-template-columns:1fr}
+  .ess-price-block{padding-right:0;border-right:none;border-bottom:1px solid #f3f4f6;padding-bottom:20px}
+  .ess-feats{grid-template-columns:1fr}
+  .ess-actions{padding-left:0;border-left:none;padding-top:20px;border-top:1px solid #f3f4f6}
+  .steps-sticky{grid-template-columns:1fr}
+  .steps-right{display:none}
+  .contact-strip{gap:28px}
+  footer{padding-left:28px;padding-right:28px;flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP NAV ══ -->
+<nav class="topnav">
+  <a href="#top" class="nav-brand">Docu<span class="na">Amiga</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btnES" onclick="setLang('es')">ES</button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="top">
+  <img class="hero-bg" src="https://images.pexels.com/photos/8441780/pexels-photo-8441780.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" alt="Professional document consultation">
+  <div class="hero-grad"></div>
+  <div class="hero-color"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="pulse-dot"></span><span id="heroBadge"></span></div>
+    <h1 class="hero-title" id="heroTitle"></h1>
+    <p class="hero-sub" id="heroSub"></p>
+    <div class="hero-btns">
+      <a href="#commission" class="btn-fill" id="cta1"></a>
+      <a href="#how" class="btn-ghost" id="cta2"></a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span class="scroll-txt" id="scrollTxt"></span>
+  </div>
+</section>
+
+<!-- ══ INTRO ══ -->
+<section class="intro">
+  <div class="intro-inner">
+    <div class="intro-top">
+      <div>
+        <img src="./logo-transparent.png" class="intro-logo" alt="DocuAmiga">
+      </div>
+      <p class="intro-copy" id="introCopy"></p>
+    </div>
+    <div class="intro-bottom reveal">
+      <p class="label" id="introOppLabel"></p>
+      <h2 class="s-title" style="color:var(--dark)" id="introTitle"></h2>
+      <p class="s-body" style="margin-top:18px" id="introBody"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCRUB TEXT ══ -->
+<section class="scrub-wrap" id="scrub">
+  <div class="scrub-sticky">
+    <div class="scrub-bg"></div>
+    <p class="scrub-text" id="scrubText"></p>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ══ -->
+<section class="section-light" id="problem">
+  <div class="inner">
+    <div class="reveal" style="text-align:center">
+      <p class="label" id="probLabel"></p>
+      <h2 class="s-title" style="color:var(--dark)" id="probTitle"></h2>
+      <p class="s-body" style="max-width:580px;margin:16px auto 0" id="probSub"></p>
+    </div>
+    <div class="cards-3" id="probCards"></div>
+  </div>
+</section>
+
+<!-- ══ STRIP ══ -->
+<div class="strip" id="strip">
+  <img id="stripImg" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=85" alt="">
+  <div class="strip-ov">
+    <p class="strip-quote" id="stripQuote"></p>
+  </div>
+</div>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="steps-wrap" id="how">
+  <div class="steps-sticky">
+    <div class="steps-bar-track"><div class="steps-bar" id="sBar"></div></div>
+    <div class="steps-left">
+      <p class="step-label-top" id="howLabel"></p>
+      <div class="step-pills">
+        <div class="sp a"></div><div class="sp"></div><div class="sp"></div><div class="sp"></div>
+      </div>
+      <div class="step-panel a" id="sp0">
+        <div class="step-num-row">
+          <div class="step-num" style="background:#2563eb">1</div>
+          <span class="step-chip" style="background:#2563eb" id="sc0"></span>
+        </div>
+        <h2 class="step-title" id="st0"></h2>
+        <p class="step-desc" id="sd0"></p>
+      </div>
+      <div class="step-panel" id="sp1">
+        <div class="step-num-row">
+          <div class="step-num" style="background:#f97316">2</div>
+          <span class="step-chip" style="background:#f97316" id="sc1"></span>
+        </div>
+        <h2 class="step-title" id="st1"></h2>
+        <p class="step-desc" id="sd1"></p>
+      </div>
+      <div class="step-panel" id="sp2">
+        <div class="step-num-row">
+          <div class="step-num" style="background:#e0197d">3</div>
+          <span class="step-chip" style="background:#e0197d" id="sc2"></span>
+        </div>
+        <h2 class="step-title" id="st2"></h2>
+        <p class="step-desc" id="sd2"></p>
+      </div>
+      <div class="step-panel" id="sp3">
+        <div class="step-num-row">
+          <div class="step-num" style="background:#7c3aed">4</div>
+          <span class="step-chip" style="background:#7c3aed" id="sc3"></span>
+        </div>
+        <h2 class="step-title" id="st3"></h2>
+        <p class="step-desc" id="sd3"></p>
+      </div>
+    </div>
+    <div class="steps-right">
+      <img class="step-img a" id="si0" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=85" alt="">
+      <img class="step-img" id="si1" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=900&q=85" alt="">
+      <img class="step-img" id="si2" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=900&q=85" alt="">
+      <img class="step-img" id="si3" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=900&q=85" alt="">
+      <div class="img-grad"></div>
+      <div class="float-card a" id="fc0">
+        <div class="fi" style="background:rgba(37,99,235,.2);color:#60a5fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div><div class="ft" id="ff0"></div><div class="fs" id="fs0"></div></div>
+      </div>
+      <div class="float-card" id="fc1">
+        <div class="fi" style="background:rgba(249,115,22,.2);color:#fb923c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div><div class="ft" id="ff1"></div><div class="fs" id="fs1"></div></div>
+      </div>
+      <div class="float-card" id="fc2">
+        <div class="fi" style="background:rgba(224,25,125,.2);color:#f472b6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div>
+        <div><div class="ft" id="ff2"></div><div class="fs" id="fs2"></div></div>
+      </div>
+      <div class="float-card" id="fc3">
+        <div class="fi" style="background:rgba(124,58,237,.2);color:#a78bfa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div><div class="ft" id="ff3"></div><div class="fs" id="fs3"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="section-white" id="services">
+  <div class="inner">
+    <div class="reveal" style="text-align:center">
+      <p class="label" id="svcsLabel"></p>
+      <h2 class="s-title" style="color:var(--dark)" id="svcsTitle"></h2>
+      <p class="s-body" style="max-width:620px;margin:16px auto 0" id="svcsSub"></p>
+    </div>
+    <div class="line-heading reveal">
+      <h3 id="premiumTitle"></h3>
+      <p id="premiumSub"></p>
+    </div>
+    <div class="svcs-grid" id="premiumCards"></div>
+    <div class="line-heading ess-head reveal">
+      <h3 id="essentialTitle"></h3>
+      <p id="essentialSub"></p>
+    </div>
+    <div id="essentialCardWrap"></div>
+  </div>
+</section>
+
+<!-- ══ COMMISSION ══ -->
+<section class="commission" id="commission">
+  <div class="comm-bg"></div>
+  <div class="comm-inner">
+    <div class="comm-head reveal">
+      <p class="label dark-label" id="commLabel"></p>
+      <h2 class="s-title" style="font-size:clamp(42px,5.5vw,76px)" id="commTitle"></h2>
+      <p class="s-body" style="color:rgba(255,255,255,.6);max-width:520px;margin:0 auto" id="commSub"></p>
+    </div>
+    <div class="comm-tiers">
+      <div class="tier" style="transition-delay:0s">
+        <div class="tier-range" id="tier1range"></div>
+        <div class="tier-pct">5%</div>
+        <div class="tier-lbl" id="tier1lbl"></div>
+      </div>
+      <div class="tier gold" style="transition-delay:.15s">
+        <div class="tier-range" id="tier2range"></div>
+        <div class="tier-pct">10%</div>
+        <div class="tier-lbl" id="tier2lbl"></div>
+      </div>
+    </div>
+    <div class="comm-details" id="commDetails">
+      <div class="comm-d" id="cd0"><div class="comm-d-icon"></div><h4></h4><p></p></div>
+      <div class="comm-d" id="cd1"><div class="comm-d-icon"></div><h4></h4><p></p></div>
+      <div class="comm-d" id="cd2"><div class="comm-d-icon"></div><h4></h4><p></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNER BENEFITS ══ -->
+<section class="section-light" id="benefits">
+  <div class="inner">
+    <div class="reveal" style="text-align:center">
+      <p class="label" id="benLabel"></p>
+      <h2 class="s-title" style="color:var(--dark)" id="benTitle"></h2>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85" alt="">
+      </div>
+      <div class="benefits" id="benefitsList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="section-white" id="faq">
+  <div class="inner">
+    <div class="reveal" style="text-align:center">
+      <p class="label" id="faqLabel"></p>
+      <h2 class="s-title" style="color:var(--dark)" id="faqTitle"></h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-inner reveal">
+    <p class="label dark-label" id="ctaLabel"></p>
+    <h2 class="cta-title" id="ctaTitle"></h2>
+    <p class="cta-sub" id="ctaSub"></p>
+    <div class="cta-row">
+      <a href="mailto:hello@docuamiga.com" class="btn-fill" id="ctaBtn1"></a>
+      <a href="https://wa.me/1XXXXXXXXXX" class="btn-ghost" id="ctaBtn2"></a>
+    </div>
+    <div class="contact-strip">
+      <div class="contact-item"><span class="contact-lbl">Email</span><span class="contact-val">hello@docuamiga.com</span></div>
+      <div class="contact-item"><span class="contact-lbl" id="ctaCommLbl"></span><span class="contact-val" style="color:var(--orange)">5% – 10%</span></div>
+      <div class="contact-item"><span class="contact-lbl" id="ctaVisaLbl"></span><span class="contact-val">EB-1A · EB-2 NIW · O-1 · O/P</span></div>
+      <div class="contact-item"><span class="contact-lbl" id="ctaAgreLbl"></span><span class="contact-val" id="ctaAgreVal"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <img src="./logo-transparent.png" class="footer-logo" alt="DocuAmiga">
+  <span class="footer-copy" id="footerCopy"></span>
+</footer>
+
+<script>
+/* ── SVG ICONS ── */
+const ICO = {
+  clock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+  check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+  users:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>`,
+  trending:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+  shield:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  file:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+  calendar:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+  refresh:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>`,
+};
+
+/* ── TRANSLATIONS ── */
+const T = {
+  en:{
+    badge:"Confidential Partnership Proposal: Law Firms & Case Preparers",
+    heroTitle:`Your Clients Win.<br><span class="grad">You Earn.</span>`,
+    heroSub:"Partner with DocuAmiga and transform how your immigration clients prepare their cases, while building a recurring revenue stream for your firm.",
+    cta1:"See Partnership Details", cta2:"How It Works",
+    scrollLbl:"Scroll",
+    introCopy:"We are the experts in organizing immigration documentation for EB-1A, EB-2 NIW, and O/P visa cases. We work alongside law firms and case preparers, never instead of them.",
+    introOppLabel:"The Partnership Opportunity",
+    introTitle:`Your clients are struggling with documentation. <em style="color:var(--pink);font-style:italic"> We solve that.</em>`,
+    introBody:"When a client arrives unprepared: scattered evidence, missing documents, no organization, missing documents, no organization. It costs you time and them money. DocuAmiga bridges that gap and rewards you for the referral.",
+    scrubWords:[
+      {t:"Every",c:"w"},{t:"immigration",c:"w pk"},{t:"case",c:"w"},{t:"deserves",c:"w"},
+      {t:"a",c:"w"},{t:"flawless",c:"w pk"},{t:"evidence",c:"w"},{t:"package.",c:"w"},
+      {t:"Your",c:"w"},{t:"firm",c:"w gd"},{t:"deserves",c:"w"},
+      {t:"to",c:"w gd"},{t:"be",c:"w gd"},{t:"rewarded",c:"w gd"},
+      {t:"for",c:"w"},{t:"making",c:"w"},{t:"that",c:"w"},{t:"happen.",c:"w"}
+    ],
+    probLabel:"The Challenge", probTitle:"What Your Clients Face",
+    probSub:"Before DocuAmiga, clients arrive at your desk, and the real work of chasing evidence begins.",
+    prob:[
+      {title:"Documents are everywhere",desc:"Emails, cloud storage, physical files across multiple devices, scattered and unordered. Clients don't know where to begin."},
+      {title:"They don't know what qualifies",desc:"Clients rarely understand what evidence strengthens their case. They submit too little, or overwhelm you with irrelevant material."},
+      {title:"Corrections cost everyone time",desc:"Back-and-forth revisions. Weeks of delays. Every hour chasing documents is an hour not spent on legal strategy."}
+    ],
+    stripQuote:'"The best immigration cases begin with perfect documentation. We deliver that, so you can focus on what matters."',
+    howLabel:"How DocuAmiga Works",
+    steps:[
+      {badge:"Step 1: Discovery",title:"We listen, we understand",desc:"Initial consultation (1 to 2 hours). We learn about the client's visa, goals, and existing documents. Human connection, no interrogation.",fc:"Discovery Consultation",fcs:"Free · 1 to 2 hours"},
+      {badge:"Step 2: Search",title:"We recover what they lost",desc:"Option A: Remote access: we search folders, emails, and Google Drive. We find documents clients didn't know they had.\n\nOption B: Upload to Drive: client gathers and sends documents for us to organize.",fc:"Document Recovery",fcs:"Remote access or file upload"},
+      {badge:"Step 3: Organization",title:"From chaos to clarity",desc:"Before: Scattered, unordered, confusing.\nAfter: Professional, categorized, and ready for your review, sorted by visa type, evidence strength, and chronology.",fc:"Professional Organization",fcs:"Strategic categories, attorney-ready"},
+      {badge:"Step 4: Delivery",title:"Your client arrives ready",desc:"Your firm receives everything organized, labeled, and complete, no pending corrections, no missing files. Total confidence from day one.",fc:"Package Delivery",fcs:"Complete and ready to file"}
+    ],
+    svcsLabel:"Our Services", svcsTitle:"What We Offer Your Clients",
+    svcsSub:"Two lines, four plans for every type of immigration case. Your commission applies to all.",
+    premiumTitle:"Premium Line: Talent Visas",
+    premiumSub:"EB-1A · EB-2 NIW · O-1  |  Payment: 50% upfront · 25% at 30 days · 25% on delivery",
+    plans:[
+      {name:"Evidence Audit",price:"$349",days:"15 days",sessions:"1 session (1.5h max)",note:"Quick review and basic organization",feats:["Profile assessment","Evidence checklist","Documentation roadmap"],earn:"$17 – $35",feat:false},
+      {name:"Evidence Builder",price:"$999",days:"60 days",sessions:"3 sessions (1.5h each)",note:"EB-1A, EB-2 NIW, your core cases",feats:["Profile assessment","Evidence checklist","Documentation roadmap","Professional migration CV","Up to 7 recommendation letters","File organization in folders","Final package ready for your review"],earn:"$50 – $100",feat:true},
+      {name:"Evidence Pro",price:"$1,499",days:"75 days",sessions:"5 sessions (1.5h each)",note:"Complex cases, full legal coordination",feats:["Everything in Builder","Third-party emails","Follow-up calls","Direct coordination with your firm"],earn:"$75 – $150",feat:false}
+    ],
+    essentialTitle:"Essential Line: Family & Humanitarian",
+    essentialSub:"Marriage · Asylum · Work permits · Any immigration process  |  100% upfront payment",
+    essentialPlan:{name:"Document Organization",price:"$350",days:"30 days",sessions:"1 session (1h max)",note:"Family-based and humanitarian processes",feats:["Remote access to search and organize files","Personalized checklist by case type","Document organization in folders","File scanning and preparation","Complete package ready for your review","30-day follow-up"],earn:"$17.50 – $35"},
+    recommended:"Recommended", referBtn:"Refer a Client", firmEarns:"Your firm earns:",
+    commLabel:"Partner Program",
+    commTitle:`Refer Clients.<br><span style="background:linear-gradient(90deg,var(--pink),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Earn 5–10%.</span>`,
+    commSub:"Every client you refer who completes a DocuAmiga service generates a recurring commission, automatically tracked and paid monthly.",
+    tier1range:"1 to 5 referrals per month", tier1lbl:"Commission per completed case",
+    tier2range:"6 or more referrals per month", tier2lbl:"Commission per completed case",
+    commDetails:[
+      {icon:"file",title:"Simple Agreement",text:"One-page referral partnership. No exclusivity required. No minimum commitment.",bg:"rgba(65,105,225,.15)",color:"#60a5fa"},
+      {icon:"calendar",title:"Monthly Payments",text:"Commissions paid monthly. Full transparency with a referral tracking dashboard.",bg:"rgba(245,160,35,.15)",color:"#fbbf24"},
+      {icon:"refresh",title:"Recurring Revenue",text:"Clients return for future applications, each return counts toward your monthly volume tier.",bg:"rgba(124,58,237,.15)",color:"#a78bfa"}
+    ],
+    benLabel:"Why Partner with DocuAmiga", benTitle:"Built for Law Firms and Case Preparers",
+    benefits:[
+      {icon:"clock",title:"Save 10+ Hours Per Case",desc:"When clients arrive organized, your team focuses on legal strategy, not document collection.",col:"rgba(224,25,125,.12)",icol:"var(--pink)"},
+      {icon:"check",title:"Higher Filing Success Rate",desc:"Well-organized evidence packages reduce RFE risk and support stronger petitions from day one.",col:"rgba(37,99,235,.1)",icol:"#3b82f6"},
+      {icon:"users",title:"Better Client Experience",desc:"Clients feel supported at every step. Better outcomes mean stronger referrals and lasting relationships.",col:"rgba(245,160,35,.1)",icol:"var(--orange)"},
+      {icon:"trending",title:"New Revenue Stream",desc:"Earn 5 to 10% commission on every completed service, with zero overhead and zero liability.",col:"rgba(124,58,237,.1)",icol:"var(--purple)"},
+      {icon:"shield",title:"Fully Confidential",desc:"Strict NDAs. All client data is handled under confidentiality agreements and permanently deleted after delivery.",col:"rgba(224,25,125,.12)",icol:"var(--pink)"}
+    ],
+    faqLabel:"Common Questions", faqTitle:"What Firms Ask",
+    faqs:[
+      {q:"Are we competing with DocuAmiga for clients?",a:"Not at all. DocuAmiga is a document organization service, not a law firm or case preparer. We do not provide legal advice, represent clients, or file petitions. We exclusively prepare and organize evidence packages that clients then bring to their attorney or case preparer: you."},
+      {q:"How does the referral process work?",a:"Simply mention DocuAmiga during intake or onboarding. We provide you with a unique referral link or code. When a client you referred completes a service, your commission is automatically tracked and paid the following month."},
+      {q:"Which visa types do you specialize in?",a:"Premium Line: EB-1A (Extraordinary Ability), EB-2 NIW (National Interest Waiver), O-1, and O/P visas. Essential Line: marriage and adjustment of status, asylum, work permits, residency, naturalization, and any other immigration process."},
+      {q:"How is client data protected?",a:"All remote sessions are conducted with the client present and supervising at all times. Documents are handled under strict confidentiality agreements. Once the package is delivered, all client files are permanently deleted from our systems."},
+      {q:"Is there a minimum referral commitment?",a:"No minimum, no exclusivity, no long-term commitment. You refer when it makes sense for your clients. The 10% tier unlocks automatically when your monthly referrals reach 6 or more."}
+    ],
+    ctaLabel:"Ready to Partner?",
+    ctaTitle:`Let's build something<br><span style="background:linear-gradient(90deg,var(--pink),var(--orange),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent">great together.</span>`,
+    ctaSub:"Schedule a 30-minute call to set up your firm's partnership agreement and referral code.",
+    ctaBtn1:"Schedule a Call", ctaBtn2:"WhatsApp Us",
+    ctaCommLbl:"Commission", ctaVisaLbl:"Visa Types", ctaAgreLbl:"Agreement", ctaAgreVal:"No minimum commitment",
+    footerCopy:"© 2026 DocuAmiga · Confidential Partnership Proposal"
+  },
+  es:{
+    badge:"Propuesta Confidencial de Alianza: Firmas y Preparadores de Casos",
+    heroTitle:`Tus Clientes Ganan.<br><span class="grad">Tú Ganas.</span>`,
+    heroSub:"Sé socio de DocuAmiga y transforma cómo tus clientes de inmigración preparan sus casos, mientras construyes un flujo de ingresos recurrente para tu firma.",
+    cta1:"Ver Detalles de la Alianza", cta2:"Cómo Funciona",
+    scrollLbl:"Desplazar",
+    introCopy:"Somos expertos en organizar documentación migratoria para casos de visa EB-1A, EB-2 NIW y O/P. Trabajamos junto a firmas de abogados y preparadores de casos, nunca en lugar de ellos.",
+    introOppLabel:"La Oportunidad de Alianza",
+    introTitle:`Tus clientes tienen dificultades con la documentación. <em style="color:var(--pink);font-style:italic"> Nosotros lo resolvemos.</em>`,
+    introBody:"Cuando un cliente llega sin preparación, con evidencia dispersa y documentos faltantes, te cuesta tiempo a ti y dinero a él. DocuAmiga cierra esa brecha y te recompensa por la referencia.",
+    scrubWords:[
+      {t:"Cada",c:"w"},{t:"caso",c:"w"},{t:"de",c:"w"},{t:"inmigración",c:"w pk"},
+      {t:"merece",c:"w"},{t:"un",c:"w"},{t:"expediente",c:"w pk"},{t:"impecable.",c:"w"},
+      {t:"Tu",c:"w"},{t:"firma",c:"w gd"},{t:"merece",c:"w"},
+      {t:"ser",c:"w gd"},{t:"recompensada",c:"w gd"},
+      {t:"por",c:"w"},{t:"hacerlo",c:"w"},{t:"posible.",c:"w"}
+    ],
+    probLabel:"El Desafío", probTitle:"Lo Que Enfrentan Tus Clientes",
+    probSub:"Antes de DocuAmiga, los clientes llegan a tu escritorio, y empieza el trabajo real de perseguir evidencia.",
+    prob:[
+      {title:"Los documentos están por todas partes",desc:"Correos, almacenamiento en la nube, archivos físicos en múltiples dispositivos, dispersos y sin orden. Los clientes no saben por dónde empezar."},
+      {title:"No saben qué califica como evidencia",desc:"Los clientes rara vez entienden qué evidencia fortalece su caso. Presentan muy poco, o te abruman con material irrelevante."},
+      {title:"Las correcciones le cuestan tiempo a todos",desc:"Revisiones de ida y vuelta. Semanas de retrasos. Cada hora persiguiendo documentos es una hora que no se dedica a la estrategia del caso."}
+    ],
+    stripQuote:'"Los mejores casos de inmigración comienzan con documentación perfecta. Nosotros la entregamos para que tú te concentres en lo que importa."',
+    howLabel:"Cómo Funciona DocuAmiga",
+    steps:[
+      {badge:"Paso 1: Descubrimiento",title:"Escuchamos, entendemos",desc:"Consulta inicial (1 a 2 horas). Aprendemos sobre la visa del cliente, sus objetivos y sus documentos. Conexión humana, sin interrogatorio.",fc:"Consulta de Descubrimiento",fcs:"Gratis · 1 a 2 horas"},
+      {badge:"Paso 2: Búsqueda",title:"Recuperamos lo que perdieron",desc:"Opción A: Acceso remoto: buscamos en carpetas, correos y Google Drive. Encontramos documentos que los clientes no sabían que tenían.\n\nOpción B: Carga en Drive: el cliente recopila y envía los documentos para que los organicemos.",fc:"Recuperación de Documentos",fcs:"Acceso remoto o carga de archivos"},
+      {badge:"Paso 3: Organización",title:"Del caos a la claridad",desc:"Antes: Disperso, sin orden, confuso.\nDespués: Profesional, categorizado, listo para revisión de tu firma, ordenado por tipo de visa, fuerza de evidencia y cronología.",fc:"Organización Profesional",fcs:"Categorías estratégicas, listo para revisar"},
+      {badge:"Paso 4: Entrega",title:"Tu cliente llega listo",desc:"Tu firma recibe todo organizado, etiquetado y completo, sin correcciones pendientes, sin archivos faltantes. Confianza total desde el primer día.",fc:"Entrega del Paquete",fcs:"Completo y listo para presentar"}
+    ],
+    svcsLabel:"Nuestros Servicios", svcsTitle:"Lo Que Ofrecemos a Tus Clientes",
+    svcsSub:"Dos líneas, cuatro planes para cada tipo de proceso migratorio. Tu comisión aplica en todos.",
+    premiumTitle:"Línea Premium: Visas de Talento",
+    premiumSub:"EB-1A · EB-2 NIW · O-1  |  Pago: 50% al contratar · 25% a los 30 días · 25% al entregar",
+    plans:[
+      {name:"Evidence Audit",price:"$349",days:"15 días",sessions:"1 sesión (máx. 1.5h)",note:"Revisión rápida y organización básica",feats:["Diagnóstico del perfil","Checklist de evidencia","Roadmap de documentación"],earn:"$17 – $35",feat:false},
+      {name:"Evidence Builder",price:"$999",days:"60 días",sessions:"3 sesiones (máx. 1.5h c/u)",note:"EB-1A, EB-2 NIW, tus casos principales",feats:["Diagnóstico del perfil","Checklist de evidencia","Roadmap de documentación","CV migratorio profesional","Hasta 7 cartas de recomendación","Organización de archivos en carpetas","Paquete final listo para tu revisión"],earn:"$50 – $100",feat:true},
+      {name:"Evidence Pro",price:"$1,499",days:"75 días",sessions:"5 sesiones (máx. 1.5h c/u)",note:"Casos complejos, coordinación legal completa",feats:["Todo lo de Builder","Correos a terceros","Llamadas de seguimiento","Coordinación directa con tu firma"],earn:"$75 – $150",feat:false}
+    ],
+    essentialTitle:"Línea Esencial: Familia y Humanitario",
+    essentialSub:"Matrimonio · Asilo · Permisos de trabajo · Cualquier proceso migratorio  |  Pago 100% por adelantado",
+    essentialPlan:{name:"Organización Documental",price:"$350",days:"30 días",sessions:"1 sesión (máx. 1h)",note:"Procesos familiares y humanitarios",feats:["Acceso remoto para buscar y organizar archivos","Checklist personalizado según el caso","Organización de documentos en carpetas","Escaneo y preparación de archivos","Paquete completo listo para tu revisión","Seguimiento por 30 días"],earn:"$17.50 – $35"},
+    recommended:"Recomendado", referBtn:"Referir un Cliente", firmEarns:"Tu firma gana:",
+    commLabel:"Programa de Socios",
+    commTitle:`Refiere Clientes.<br><span style="background:linear-gradient(90deg,var(--pink),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Gana 5–10%.</span>`,
+    commSub:"Cada cliente que refieras y complete un servicio de DocuAmiga genera una comisión recurrente, rastreada automáticamente y pagada mensualmente.",
+    tier1range:"1 a 5 referidos por mes", tier1lbl:"Comisión por caso completado",
+    tier2range:"6 o más referidos por mes", tier2lbl:"Comisión por caso completado",
+    commDetails:[
+      {icon:"file",title:"Acuerdo Simple",text:"Alianza de referidos en una página. Sin exclusividad ni compromiso mínimo.",bg:"rgba(65,105,225,.15)",color:"#60a5fa"},
+      {icon:"calendar",title:"Pagos Mensuales",text:"Comisiones pagadas mensualmente. Transparencia total con panel de seguimiento.",bg:"rgba(245,160,35,.15)",color:"#fbbf24"},
+      {icon:"refresh",title:"Ingresos Recurrentes",text:"Los clientes regresan para futuras aplicaciones, cada regreso cuenta hacia tu volumen mensual.",bg:"rgba(124,58,237,.15)",color:"#a78bfa"}
+    ],
+    benLabel:"Por Qué Ser Socio de DocuAmiga", benTitle:"Diseñado para Firmas y Preparadores de Casos",
+    benefits:[
+      {icon:"clock",title:"Ahorra 10+ Horas por Caso",desc:"Cuando los clientes llegan organizados, tu equipo se enfoca en la estrategia del caso, no en perseguir documentos.",col:"rgba(224,25,125,.12)",icol:"var(--pink)"},
+      {icon:"check",title:"Mayor Tasa de Éxito en Peticiones",desc:"Los paquetes de evidencia completos y organizados reducen el riesgo de RFE y apoyan peticiones más sólidas desde el primer día.",col:"rgba(37,99,235,.1)",icol:"#3b82f6"},
+      {icon:"users",title:"Mejor Experiencia del Cliente",desc:"Los clientes se sienten apoyados en cada paso. Mejores resultados significan relaciones más sólidas y más referidos.",col:"rgba(245,160,35,.1)",icol:"var(--orange)"},
+      {icon:"trending",title:"Nueva Fuente de Ingresos",desc:"Gana 5 a 10% de comisión en cada servicio completado, con cero overhead y cero responsabilidad.",col:"rgba(124,58,237,.1)",icol:"var(--purple)"},
+      {icon:"shield",title:"Totalmente Confidencial",desc:"NDAs estrictos. Toda la información del cliente se maneja bajo acuerdos de confidencialidad y se elimina permanentemente después de la entrega.",col:"rgba(224,25,125,.12)",icol:"var(--pink)"}
+    ],
+    faqLabel:"Preguntas Frecuentes", faqTitle:"Lo Que Preguntan las Firmas",
+    faqs:[
+      {q:"¿Competimos con DocuAmiga por los clientes?",a:"Para nada. DocuAmiga es un servicio de organización documental, no una firma de abogados ni un preparador de casos. No proporcionamos asesoría legal, no representamos a clientes ni presentamos peticiones. Exclusivamente preparamos y organizamos paquetes de evidencia que los clientes luego llevan a su abogado o preparador de casos: tú."},
+      {q:"¿Cómo funciona el proceso de referidos?",a:"Simplemente menciona DocuAmiga durante el intake o la incorporación del cliente. Te proporcionamos un enlace o código de referido único. Cuando un cliente que referiste completa un servicio, tu comisión se rastrea automáticamente y se paga el mes siguiente."},
+      {q:"¿En qué tipos de visa se especializan?",a:"Línea Premium: EB-1A (Habilidad Extraordinaria), EB-2 NIW (Exención por Interés Nacional), O-1 y O/P. Línea Esencial: matrimonio y ajuste de estatus, asilo, permisos de trabajo, residencia, naturalización y cualquier otro proceso migratorio."},
+      {q:"¿Cómo se protege la información del cliente?",a:"Todas las sesiones remotas se realizan con el cliente presente y supervisando en todo momento. Los documentos se manejan bajo acuerdos de confidencialidad estrictos. Una vez entregado el paquete, todos los archivos del cliente se eliminan permanentemente de nuestros sistemas."},
+      {q:"¿Hay un compromiso mínimo de referidos?",a:"Sin mínimo, sin exclusividad, sin compromiso a largo plazo. Refieres cuando tiene sentido para tus clientes. El nivel del 10% se desbloquea automáticamente cuando tus referidos mensuales llegan a 6 o más."}
+    ],
+    ctaLabel:"¿Listo para ser Socio?",
+    ctaTitle:`Construyamos algo<br><span style="background:linear-gradient(90deg,var(--pink),var(--orange),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent">grande juntos.</span>`,
+    ctaSub:"Agenda una llamada de 30 minutos para configurar el acuerdo de alianza y el código de referido de tu firma.",
+    ctaBtn1:"Agendar una Llamada", ctaBtn2:"WhatsApp",
+    ctaCommLbl:"Comisión", ctaVisaLbl:"Tipos de Visa", ctaAgreLbl:"Acuerdo", ctaAgreVal:"Sin compromiso mínimo",
+    footerCopy:"© 2026 DocuAmiga · Propuesta Confidencial de Alianza"
+  }
+};
+
+/* ── HELPERS ── */
+function chkIco(){return`<span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>`}
+
+/* ── RENDER ── */
+let curLang='en';
+
+function setLang(l){
+  curLang=l;
+  document.getElementById('btnEN').classList.toggle('active',l==='en');
+  document.getElementById('btnES').classList.toggle('active',l==='es');
+  render(l);
+}
+
+function render(l){
+  const t=T[l];
+  const txt={heroBadge:t.badge,heroSub:t.heroSub,scrollTxt:t.scrollLbl,introCopy:t.introCopy,introOppLabel:t.introOppLabel,introBody:t.introBody,probLabel:t.probLabel,probTitle:t.probTitle,probSub:t.probSub,howLabel:t.howLabel,svcsLabel:t.svcsLabel,svcsTitle:t.svcsTitle,svcsSub:t.svcsSub,premiumTitle:t.premiumTitle,premiumSub:t.premiumSub,essentialTitle:t.essentialTitle,essentialSub:t.essentialSub,commLabel:t.commLabel,commSub:t.commSub,tier1range:t.tier1range,tier1lbl:t.tier1lbl,tier2range:t.tier2range,tier2lbl:t.tier2lbl,benLabel:t.benLabel,benTitle:t.benTitle,faqLabel:t.faqLabel,faqTitle:t.faqTitle,ctaLabel:t.ctaLabel,ctaSub:t.ctaSub,ctaCommLbl:t.ctaCommLbl,ctaVisaLbl:t.ctaVisaLbl,ctaAgreLbl:t.ctaAgreLbl,ctaAgreVal:t.ctaAgreVal,footerCopy:t.footerCopy};
+  Object.entries(txt).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.textContent=v});
+  const html={heroTitle:t.heroTitle,introTitle:t.introTitle,stripQuote:t.stripQuote,commTitle:t.commTitle,ctaTitle:t.ctaTitle};
+  Object.entries(html).forEach(([id,v])=>{const el=document.getElementById(id);if(el)el.innerHTML=v});
+  document.getElementById('cta1').textContent=t.cta1;
+  document.getElementById('cta2').textContent=t.cta2;
+  document.getElementById('ctaBtn1').textContent=t.ctaBtn1;
+  document.getElementById('ctaBtn2').textContent=t.ctaBtn2;
+  rebuildScrub(l);rebuildProblems(l);rebuildSteps(l);
+  rebuildServices(l);rebuildCommDetails(l);rebuildBenefits(l);rebuildFaq(l);
+  setTimeout(onScroll,60);
+}
+
+function rebuildScrub(l){
+  const words=T[l].scrubWords;
+  document.getElementById('scrubText').innerHTML=words.map(w=>`<span class="${w.c}">${w.t}</span> `).join('');
+}
+
+function rebuildProblems(l){
+  const imgs=['https://images.unsplash.com/photo-1568667256549-094345857637?w=700&q=85','https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=85','https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=700&q=85'];
+  document.getElementById('probCards').innerHTML=T[l].prob.map((p,i)=>`<div class="prob-card" style="transition-delay:${i*.12}s"><img src="${imgs[i]}" alt=""><div class="prob-body"><h3 class="prob-title">${p.title}</h3><p class="prob-desc">${p.desc}</p></div></div>`).join('');
+}
+
+function rebuildSteps(l){
+  const steps=T[l].steps;
+  steps.forEach((s,i)=>{
+    document.getElementById(`sc${i}`).textContent=s.badge;
+    document.getElementById(`st${i}`).textContent=s.title;
+    document.getElementById(`sd${i}`).textContent=s.desc;
+    document.getElementById(`ff${i}`).textContent=s.fc;
+    document.getElementById(`fs${i}`).textContent=s.fcs;
+  });
+}
+
+function rebuildServices(l){
+  const t=T[l];
+  document.getElementById('premiumCards').innerHTML=t.plans.map((p,i)=>`
+    <div class="svc-card${p.feat?' feat':''}" style="transition-delay:${[0,.14,.28][i]}s">
+      ${p.feat?`<div class="rec-badge">${t.recommended}</div>`:''}
+      <h3 class="svc-name">${p.name}</h3>
+      <div class="svc-price">${p.price}</div>
+      <div class="svc-meta"><span>⏱ ${p.days}</span><span>📋 ${p.sessions}</span><span style="font-size:12px;color:#d1d5db">${p.note}</span></div>
+      <ul class="svc-features">${p.feats.map(f=>`<li class="svc-feat">${chkIco()}${f}</li>`).join('')}</ul>
+      <button class="svc-btn ${p.feat?'svc-btn-fill':'svc-btn-out'}">${t.referBtn}</button>
+      <p class="earn-line">${t.firmEarns} <strong>${p.earn}</strong></p>
+    </div>`).join('');
+  const ep=t.essentialPlan;
+  document.getElementById('essentialCardWrap').innerHTML=`
+    <div class="ess-card">
+      <div class="ess-price-block">
+        <div class="ess-price">${ep.price}</div>
+        <div class="ess-meta-item">⏱ ${ep.days}</div>
+        <div class="ess-meta-item">📋 ${ep.sessions}</div>
+      </div>
+      <div>
+        <h3 class="svc-name" style="margin-bottom:6px">${ep.name}</h3>
+        <p style="font-size:13px;color:#9ca3af;margin-bottom:18px">${ep.note}</p>
+        <ul class="ess-feats">${ep.feats.map(f=>`<li class="svc-feat">${chkIco()}${f}</li>`).join('')}</ul>
+      </div>
+      <div class="ess-actions">
+        <button class="svc-btn svc-btn-out" style="margin-top:0">${t.referBtn}</button>
+        <p class="earn-line" style="margin-top:14px">${t.firmEarns}<br><strong>${ep.earn}</strong></p>
+      </div>
+    </div>`;
+}
+
+function rebuildCommDetails(l){
+  T[l].commDetails.forEach((d,i)=>{
+    const el=document.getElementById(`cd${i}`);if(!el)return;
+    el.querySelector('.comm-d-icon').style.background=d.bg;
+    el.querySelector('.comm-d-icon').style.color=d.color;
+    el.querySelector('.comm-d-icon').innerHTML=ICO[d.icon];
+    el.querySelector('h4').textContent=d.title;
+    el.querySelector('p').textContent=d.text;
+  });
+}
+
+function rebuildBenefits(l){
+  document.getElementById('benefitsList').innerHTML=T[l].benefits.map((b,i)=>`
+    <div class="ben" style="transition-delay:${i*.1}s">
+      <div class="ben-ico" style="background:${b.col};color:${b.icol}">${ICO[b.icon]}</div>
+      <div><div class="ben-title">${b.title}</div><div class="ben-desc">${b.desc}</div></div>
+    </div>`).join('');
+}
+
+function rebuildFaq(l){
+  document.getElementById('faqList').innerHTML=T[l].faqs.map(f=>`
+    <div class="faq-item">
+      <button class="faq-btn" onclick="toggleFaq(this)">${f.q}
+        <svg class="faq-ico" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+      </button>
+      <div class="faq-body"><p class="faq-text">${f.a}</p></div>
+    </div>`).join('');
+}
+
+/* ── SCROLL ── */
+const stepsWrap=document.getElementById('how');
+const sBar=document.getElementById('sBar');
+const pills=document.querySelectorAll('.sp');
+const panels=[0,1,2,3].map(i=>document.getElementById(`sp${i}`));
+const imgs=[0,1,2,3].map(i=>document.getElementById(`si${i}`));
+const fcs=[0,1,2,3].map(i=>document.getElementById(`fc${i}`));
+let curStep=-1;
+
+function setStep(s){
+  if(s===curStep)return;curStep=s;
+  pills.forEach((p,i)=>p.classList.toggle('a',i===s));
+  panels.forEach((p,i)=>p.classList.toggle('a',i===s));
+  imgs.forEach((g,i)=>g.classList.toggle('a',i===s));
+  fcs.forEach((f,i)=>f.classList.toggle('a',i===s));
+}
+
+const scrubWrap=document.getElementById('scrub');
+const stripEl=document.getElementById('strip');
+const stripImg=document.getElementById('stripImg');
+const stripQuoteEl=document.getElementById('stripQuote');
+
+function onScroll(){
+  const wh=window.innerHeight;
+  if(stepsWrap){
+    const r=stepsWrap.getBoundingClientRect();
+    const prog=Math.max(0,Math.min(1,-r.top/(stepsWrap.offsetHeight-wh)));
+    sBar.style.width=(prog*100)+'%';
+    setStep(Math.min(3,Math.floor(prog*4)));
+  }
+  const scrubWords=document.querySelectorAll('#scrubText .w');
+  if(scrubWrap&&scrubWords.length){
+    const r=scrubWrap.getBoundingClientRect();
+    const prog=Math.max(0,Math.min(1,-r.top/(scrubWrap.offsetHeight-wh)));
+    const lit=Math.floor(prog*(scrubWords.length+4));
+    scrubWords.forEach((w,i)=>w.classList.toggle('on',i<lit));
+  }
+  if(stripEl){
+    const r=stripEl.getBoundingClientRect();
+    const prog=1-(r.top+r.height)/(wh+r.height);
+    stripImg.style.transform=`scale(1.12) translateY(${prog*-45}px)`;
+    if(r.top<wh*.78)stripQuoteEl.classList.add('on');
+  }
+  document.querySelectorAll('.reveal,.prob-card,.svc-card,.ess-card,.tier,.partner-img-wrap,.ben').forEach(el=>{
+    if(el.getBoundingClientRect().top<wh*.9)el.classList.add('on');
+  });
+  const cd=document.getElementById('commDetails');
+  if(cd&&cd.getBoundingClientRect().top<wh*.9)cd.classList.add('on');
+}
+
+window.addEventListener('scroll',onScroll,{passive:true});
+function toggleFaq(btn){const item=btn.parentElement;const was=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!was)item.classList.add('open')}
+
+/* ── INIT ── */
+render('en');
+</script>
+</body>
+</html>
