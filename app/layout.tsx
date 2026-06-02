@@ -1,7 +1,6 @@
+import type { Metadata } from "next"
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google"
-
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
@@ -12,6 +11,12 @@ const playfair = Playfair_Display({
   weight: ["700", "800", "900"],
 })
 
+export const metadata: Metadata = {
+  title: "DocuAmiga — Your Documentation, Organized. Your Case, Stronger.",
+  description:
+    "For professionals applying to EB-1A, EB-2 NIW, and O/P visas. Because immigration shouldn't add stress.",
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +25,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={cn(
         "antialiased",
         fontMono.variable,
@@ -29,9 +33,7 @@ export default function RootLayout({
         playfair.variable
       )}
     >
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
