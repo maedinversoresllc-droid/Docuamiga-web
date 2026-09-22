@@ -13,8 +13,10 @@ import { cn } from "@/lib/utils"
 import { LanguageProvider, useLang } from "@/context/language-context"
 import { t } from "@/lib/i18n"
 
-/* ── constants ── */
+/* ‚îÄ‚îÄ constants ‚îÄ‚îÄ */
 const CALENDAR_URL = "https://calendar.app.google/ES2H858yLXX1LF1A9"
+const WHATSAPP_PRICING = "https://wa.me/19082281580?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20los%20paquetes%20de%20DocuAmiga%20y%20cu%C3%A1l%20me%20conviene."
+const EMAIL_CONTACT = "mailto:hello@docuamiga.com?subject=Consulta%20sobre%20servicios%20DocuAmiga"
 
 const stepColors = [
   { badge: "bg-blue-600", bg: "bg-blue-50", text: "text-blue-600" },
@@ -31,13 +33,13 @@ const stepIcons = [
 ]
 
 const stepImages = [
-  // Step 1 – Discovery: warm consultation, two people with laptops at the coast
+  // Step 1 ‚Äì Discovery: warm consultation, two people with laptops at the coast
   "https://images.pexels.com/photos/7476194/pexels-photo-7476194.jpeg?auto=compress&cs=tinysrgb&w=1200&q=85",
-  // Step 2 – Search: hands on documents + laptop, active document recovery
+  // Step 2 ‚Äì Search: hands on documents + laptop, active document recovery
   "https://images.pexels.com/photos/8428063/pexels-photo-8428063.jpeg?auto=compress&cs=tinysrgb&w=1200&q=85",
-  // Step 3 – Organization: woman organizing binders/files — from chaos to clarity
+  // Step 3 ‚Äì Organization: woman organizing binders/files ‚Äî from chaos to clarity
   "https://images.pexels.com/photos/8296972/pexels-photo-8296972.jpeg?auto=compress&cs=tinysrgb&w=1200&q=85",
-  // Step 4 – Delivery: tidy desk with laptop and folders — complete, ready to file
+  // Step 4 ‚Äì Delivery: tidy desk with laptop and folders ‚Äî complete, ready to file
   "https://images.pexels.com/photos/8297022/pexels-photo-8297022.jpeg?auto=compress&cs=tinysrgb&w=1200&q=85",
 ]
 
@@ -54,7 +56,7 @@ const blogImages = [
 ]
 const blogCatColors = ["bg-blue-500", "bg-[#e0197d]", "bg-purple-500"]
 
-/* ── animated counter ── */
+/* ‚îÄ‚îÄ animated counter ‚îÄ‚îÄ */
 function Counter({ target }: { target: number }) {
   const [count, setCount] = useState(0)
   useEffect(() => {
@@ -71,7 +73,7 @@ function Counter({ target }: { target: number }) {
   return <>{count}</>
 }
 
-/* ══════════════════════════════════════ NAVBAR ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê NAVBAR ‚ïê‚ïê */
 function Navbar() {
   const { lang, setLang } = useLang()
   const tx = t[lang].nav
@@ -134,7 +136,7 @@ function Navbar() {
   )
 }
 
-/* ══════════════════════════════════════ HERO — FULL BLEED PARALLAX ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê HERO ‚Äî FULL BLEED PARALLAX ‚ïê‚ïê */
 function HeroSection() {
   const { lang } = useLang()
   const tx = t[lang].hero
@@ -163,10 +165,10 @@ function HeroSection() {
         <div className="flex flex-col gap-3 w-fit">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 w-fit">
             <span className="w-2 h-2 bg-[#e0197d] rounded-full animate-pulse" />
-            <span className="text-white/80 text-sm font-medium">EB-1A · EB-2 NIW · O/P Visas</span>
+            <span className="text-white/80 text-sm font-medium">EB-1A ¬∑ EB-2 NIW ¬∑ O/P Visas</span>
           </div>
           <div className="inline-flex items-center gap-2 bg-white/8 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 w-fit">
-            <span className="text-white/55 text-sm">📍 Miami · New York · Worldwide</span>
+            <span className="text-white/55 text-sm">üìç Miami ¬∑ New York ¬∑ Worldwide</span>
           </div>
         </div>
 
@@ -204,7 +206,7 @@ function HeroSection() {
   )
 }
 
-/* ══════════════════════════════════════ CHALLENGE ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê CHALLENGE ‚ïê‚ïê */
 const CINEMATIC_WORDS = {
   en: [
     { text: "Your", hl: "" },
@@ -226,7 +228,7 @@ const CINEMATIC_WORDS = {
     { text: "organizada.", hl: "" },
     { text: "Tu", hl: "" },
     { text: "caso,", hl: "gold" },
-    { text: "más", hl: "gold" },
+    { text: "m√°s", hl: "gold" },
     { text: "fuerte.", hl: "gold" },
   ],
 }
@@ -257,7 +259,7 @@ function ChallengeSection() {
           <div className="inline-flex items-center gap-2 border border-[#e0197d]/35 rounded-full px-4 py-1.5 mb-6">
             <span className="w-1.5 h-1.5 bg-[#e0197d] rounded-full animate-pulse" />
             <span className="text-[#e0197d] text-sm font-semibold uppercase tracking-widest">
-              {lang === "en" ? "The Challenge" : "El Desafío"}
+              {lang === "en" ? "The Challenge" : "El Desaf√≠o"}
             </span>
           </div>
           <h2 className="text-5xl md:text-7xl font-bold text-white leading-[1.05] mb-5">
@@ -266,11 +268,11 @@ function ChallengeSection() {
           <p className="text-gray-400 text-xl max-w-xl">
             {lang === "en"
               ? "These are the obstacles every applicant faces."
-              : "Estos son los obstáculos que enfrenta todo solicitante."}
+              : "Estos son los obst√°culos que enfrenta todo solicitante."}
           </p>
         </motion.div>
 
-        {/* Challenge items — editorial horizontal list */}
+        {/* Challenge items ‚Äî editorial horizontal list */}
         <div>
           {tx.cards.map((card, i) => (
             <motion.div
@@ -303,7 +305,7 @@ function ChallengeSection() {
   )
 }
 
-/* ══════════════════════════════════════ CINEMATIC WORD-REVEAL STRIP ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê CINEMATIC WORD-REVEAL STRIP ‚ïê‚ïê */
 function CinematicStrip() {
   const { lang } = useLang()
   const ref = useRef<HTMLDivElement>(null)
@@ -357,7 +359,7 @@ function CinematicStrip() {
   )
 }
 
-/* ══════════════════════════════════════ DIFFERENTIATOR ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê DIFFERENTIATOR ‚ïê‚ïê */
 function DifferentiatorSection() {
   const { lang } = useLang()
   const tx = t[lang].diff
@@ -396,7 +398,7 @@ function DifferentiatorSection() {
   )
 }
 
-/* ══════════════════════════════════════ STATS ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê STATS ‚ïê‚ïê */
 function StatsSection() {
   const { lang } = useLang()
   const ref = useRef<HTMLDivElement>(null)
@@ -407,13 +409,13 @@ function StatsSection() {
         { n: 200, suffix: "+", label: "Cases Organized" },
         { n: 98, suffix: "%", label: "Attorney Satisfaction" },
         { n: 3, suffix: "x", label: "Faster Filing" },
-        { n: 5, suffix: "★", label: "Average Rating" },
+        { n: 5, suffix: "‚òÖ", label: "Average Rating" },
       ]
     : [
         { n: 200, suffix: "+", label: "Casos Organizados" },
-        { n: 98, suffix: "%", label: "Satisfacción del Abogado" },
-        { n: 3, suffix: "x", label: "Archivado más Rápido" },
-        { n: 5, suffix: "★", label: "Calificación Promedio" },
+        { n: 98, suffix: "%", label: "Satisfacci√≥n del Abogado" },
+        { n: 3, suffix: "x", label: "Archivado m√°s R√°pido" },
+        { n: 5, suffix: "‚òÖ", label: "Calificaci√≥n Promedio" },
       ]
 
   return (
@@ -441,7 +443,7 @@ function StatsSection() {
   )
 }
 
-/* ══════════════════════════════════════ HOW IT WORKS — STICKY SCROLL ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê HOW IT WORKS ‚Äî STICKY SCROLL ‚ïê‚ïê */
 function HowItWorksSection() {
   const { lang } = useLang()
   const tx = t[lang].how
@@ -466,7 +468,7 @@ function HowItWorksSection() {
           <motion.div className="h-full bg-gradient-to-r from-blue-500 via-[#e0197d] to-violet-600" style={{ width: barWidth }} />
         </div>
 
-        {/* ── Mobile layout: full-screen image bg ── */}
+        {/* ‚îÄ‚îÄ Mobile layout: full-screen image bg ‚îÄ‚îÄ */}
         <div className="md:hidden h-full relative overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div key={`mob-img-${activeStep}`} className="absolute inset-0"
@@ -490,16 +492,16 @@ function HowItWorksSection() {
                 </div>
                 <h2 className="text-3xl font-bold text-white leading-tight">{tx.steps[activeStep].title}</h2>
                 <p className="text-white/70 text-base leading-relaxed">{tx.steps[activeStep].desc}</p>
-                <p className="text-white/50 text-sm font-semibold">⏱ {tx.steps[activeStep].time}</p>
+                <p className="text-white/50 text-sm font-semibold">‚è± {tx.steps[activeStep].time}</p>
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
 
-        {/* ── Desktop layout: 2-column ── */}
+        {/* ‚îÄ‚îÄ Desktop layout: 2-column ‚îÄ‚îÄ */}
         <div className="hidden md:grid md:grid-cols-2 h-full">
 
-          {/* Left — text panel */}
+          {/* Left ‚Äî text panel */}
           <div className="flex flex-col justify-center p-12 lg:p-16 bg-[#fdf4f8] overflow-hidden">
             <p className="text-xs font-bold uppercase tracking-widest text-[#e0197d] mb-6">{tx.heading}</p>
 
@@ -539,7 +541,7 @@ function HowItWorksSection() {
             </AnimatePresence>
           </div>
 
-          {/* Right — image panel */}
+          {/* Right ‚Äî image panel */}
           <div className="relative overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -582,7 +584,7 @@ function HowItWorksSection() {
   )
 }
 
-/* ══════════════════════════════════════ PRICING ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê PRICING ‚ïê‚ïê */
 function PricingSection() {
   const { lang } = useLang()
   const tx = t[lang].pricing
@@ -591,10 +593,27 @@ function PricingSection() {
   return (
     <section id="services" className="py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
-        <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <motion.div className="text-center mb-6" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className="text-3xl md:text-5xl font-bold text-[#1a1024] mb-3">{tx.heading}</h2>
-          <p className="text-gray-500">{tx.sub}</p>
+          <p className="text-gray-500 max-w-xl mx-auto">{tx.sub}</p>
         </motion.div>
+
+        {/* Contact nudge */}
+        <motion.div
+          className="flex flex-wrap items-center justify-center gap-4 mb-14"
+          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }}
+        >
+          <a href={WHATSAPP_PRICING} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-green-500 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-green-600 transition-colors shadow-sm">
+            <MessageCircle className="w-4 h-4" />
+            {lang === "en" ? "Chat on WhatsApp" : "Chatear por WhatsApp"}
+          </a>
+          <a href={EMAIL_CONTACT}
+            className="inline-flex items-center gap-2 border-2 border-gray-200 text-gray-600 text-sm font-semibold px-5 py-2.5 rounded-full hover:border-[#e0197d] hover:text-[#e0197d] transition-colors">
+            {lang === "en" ? "‚úâÔ∏è Send an email" : "‚úâÔ∏è Enviar un email"}
+          </a>
+        </motion.div>
+
         <div className="grid md:grid-cols-3 gap-8 items-start">
           {tx.plans.map((plan, i) => (
             <motion.div
@@ -608,11 +627,10 @@ function PricingSection() {
                   <span className="bg-[#f5a623] text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">{tx.recommended}</span>
                 </div>
               )}
-              <h3 className="text-xl font-bold text-[#1a1024] mb-2">{plan.name}</h3>
-              <p className="text-4xl font-bold text-[#4169e1] mb-5">{plan.price}</p>
+              <h3 className="text-xl font-bold text-[#1a1024] mb-4">{plan.name}</h3>
               <div className="flex flex-col gap-1 text-sm text-gray-500 border-b border-gray-100 pb-5 mb-5">
                 <div className="flex items-center gap-2"><Clock className="w-4 h-4 shrink-0" />{plan.time}</div>
-                <div>📋 {plan.sessions}</div>
+                <div>üìã {plan.sessions}</div>
                 <div className="text-xs text-gray-400 mt-1">{plan.note}</div>
               </div>
               <ul className="flex flex-col gap-2.5 mb-8">
@@ -623,12 +641,15 @@ function PricingSection() {
                 ))}
               </ul>
               <a
-                href={CALENDAR_URL}
+                href={WHATSAPP_PRICING}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn("w-full py-3 rounded-xl font-semibold text-sm transition-colors text-center block", featured[i] ? "bg-[#e0197d] text-white hover:bg-[#c4166c]" : "border-2 border-[#e0197d] text-[#e0197d] hover:bg-pink-50")}
               >
                 {tx.choosePlan}
+              </a>
+              <a href={EMAIL_CONTACT} className="block text-center text-xs text-gray-400 hover:text-gray-600 transition-colors mt-3">
+                {lang === "en" ? "or email us" : "o escr√≠benos por email"}
               </a>
             </motion.div>
           ))}
@@ -638,7 +659,83 @@ function PricingSection() {
   )
 }
 
-/* ══════════════════════════════════════ BLOG ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê VISA GUIDE ‚ïê‚ïê */
+function VisaGuideSection() {
+  const { lang } = useLang()
+  const tx = t[lang].visaGuide
+
+  const icons = ["üß¨", "üéì", "‚≠ê"]
+  const accentColors = ["text-blue-400", "text-[#e0197d]", "text-violet-400"]
+  const borderColors = ["border-blue-500/30", "border-[#e0197d]/30", "border-violet-500/30"]
+
+  return (
+    <section className="py-28 px-6 bg-[#0d0a16] relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-blue-600/6 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/3 -right-40 w-[500px] h-[500px] bg-[#e0197d]/6 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div className="inline-flex items-center gap-2 border border-[#e0197d]/35 rounded-full px-4 py-1.5 mb-6">
+            <span className="w-1.5 h-1.5 bg-[#e0197d] rounded-full animate-pulse" />
+            <span className="text-[#e0197d] text-sm font-semibold uppercase tracking-widest">
+              {lang === "en" ? "Visa Navigator" : "Navegador de Visas"}
+            </span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4 max-w-3xl mx-auto">{tx.heading}</h2>
+          <p className="text-gray-400 text-lg max-w-xl mx-auto">{tx.sub}</p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-14">
+          {tx.cards.map((card, i) => (
+            <motion.div
+              key={i}
+              className={cn("rounded-2xl border bg-white/4 backdrop-blur-sm p-7 flex flex-col gap-4", borderColors[i])}
+              initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.12 }}
+              whileHover={{ y: -4 }}
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">{icons[i]}</span>
+                <span className={cn("text-xs font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/8", accentColors[i])}>
+                  {card.visa}
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-white">{card.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed flex-1">{card.desc}</p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {card.tags.map((tag, ti) => (
+                  <span key={ti} className="text-xs text-gray-400 bg-white/6 border border-white/10 rounded-full px-3 py-1">{tag}</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div className="text-center" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <p className="text-white/60 text-lg mb-6">{tx.cta}</p>
+          <a
+            href={WHATSAPP_PRICING}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-8 py-4 rounded-full hover:bg-green-600 hover:scale-105 transition-all shadow-lg shadow-green-500/20"
+          >
+            <MessageCircle className="w-5 h-5" />
+            {tx.ctaBtn}
+          </a>
+          <p className="text-gray-600 text-sm mt-4">
+            {lang === "en" ? "Or email us at " : "O escr√≠benos a "}
+            <a href="mailto:hello@docuamiga.com" className="text-gray-400 hover:text-white transition-colors underline underline-offset-2">
+              hello@docuamiga.com
+            </a>
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê BLOG ‚ïê‚ïê */
 function BlogSection() {
   const { lang } = useLang()
   const tx = t[lang].blog
@@ -682,7 +779,7 @@ function BlogSection() {
   )
 }
 
-/* ══════════════════════════════════════ FAQ ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê FAQ ‚ïê‚ïê */
 function FaqSection() {
   const { lang } = useLang()
   const tx = t[lang].faq
@@ -728,7 +825,7 @@ function FaqSection() {
   )
 }
 
-/* ══════════════════════════════════════ FOOTER ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê FOOTER ‚ïê‚ïê */
 function Footer() {
   const { lang } = useLang()
   const tx = t[lang].footer
@@ -741,7 +838,7 @@ function Footer() {
             <Image src="/logo-transparent.png" alt="DocuAmiga" width={160} height={48} className="object-contain brightness-0 invert mb-4" />
             <p className="text-gray-400 text-sm leading-relaxed whitespace-pre-line">{tx.tagline}</p>
             <a href="mailto:hello@docuamiga.com" className="text-gray-400 hover:text-white text-sm transition-colors mt-2 inline-block">hello@docuamiga.com</a>
-            <p className="text-gray-500 text-xs mt-3">📍 Miami · New York · Worldwide</p>
+            <p className="text-gray-500 text-xs mt-3">üìç Miami ¬∑ New York ¬∑ Worldwide</p>
           </div>
           <div>
             <h4 className="font-semibold mb-5 text-sm uppercase tracking-wide text-gray-300">{tx.services}</h4>
@@ -783,7 +880,7 @@ function Footer() {
   )
 }
 
-/* ══════════════════════════════════════ ROOT ══ */
+/* ‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê‚ïê ROOT ‚ïê‚ïê */
 function LandingPage() {
   return (
     <main>
@@ -793,6 +890,7 @@ function LandingPage() {
       <CinematicStrip />
       <DifferentiatorSection />
       <HowItWorksSection />
+      <VisaGuideSection />
       <PricingSection />
       <BlogSection />
       <FaqSection />
