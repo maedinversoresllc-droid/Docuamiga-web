@@ -1,0 +1,6 @@
+{
+  "name": "docuamiga-web",
+  "compatibility_date": "2026-09-26",
+  "observability": { "enabled": true },
+  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "docuamiga-web" }]
+}
